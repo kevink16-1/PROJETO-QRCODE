@@ -1,46 +1,125 @@
-# Projeto QR Code (Node.js)
+# Projeto QR Code
 
-Projeto desenvolvido no bootcamp da DIO com foco em geração de QR Codes usando JavaScript e Node.js.
+Projeto desenvolvido no bootcamp da DIO com foco em JavaScript e Node.js. A aplicação funciona como um kit de utilidades para e-commerce, permitindo gerar QR Codes e senhas diretamente pelo terminal.
 
-## Sobre
+## Sobre o projeto
 
-A proposta é criar uma aplicação simples e funcional para gerar QR Codes a partir de textos, links e outras informações rápidas, simulando um uso real de mercado.
+A proposta deste projeto é criar uma ferramenta simples, prática e interativa para resolver necessidades comuns do dia a dia: transformar textos ou links em QR Code e gerar senhas configuráveis.
+
+Mesmo sendo uma aplicação de terminal, o projeto trabalha conceitos importantes como organização de arquivos, uso de bibliotecas externas, variáveis de ambiente e separação de responsabilidades no código.
 
 ## Funcionalidades
 
-- Gerar QR Code a partir de texto
-- Gerar QR Code a partir de URL
-- Exibir resultado de forma prática para teste
-- Estruturar o código em módulos para facilitar manutenção
+- Gerar QR Code a partir de texto ou link
+- Exibir o QR Code no terminal
+- Gerar senhas automaticamente
+- Configurar tipos de caracteres usados na senha
+- Definir tamanho da senha por variável de ambiente
+- Escolher a funcionalidade por menu interativo
 
 ## Tecnologias utilizadas
 
 - Node.js
 - JavaScript (ES Modules)
+- prompt
+- chalk
+- qrcode-terminal
 
-## Estrutura do projeto
+## Estrutura de pastas
 
 ```text
 projeto-qrcode/
+├── .env.example
+├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── README.md
 └── src/
-    └── index.js
-Como executar
-Instale as dependências:
-npm install
-Rode o projeto:
-npm run start
-ou
+    ├── index.js
+    ├── prompts-schema/
+    │   ├── prompt-schema-main.js
+    │   └── prompt-schema-qrcode.js
+    └── services/
+        ├── password/
+        │   ├── create.js
+        │   ├── handle.js
+        │   └── utils/
+        │       └── permitted-characters.js
+        └── qr-code/
+            ├── create.js
+            └── handle.js
+```
 
-node src/index.js
-Aprendizados
-Organização de projeto em Node.js
-Separação de responsabilidades no código
-Uso prático de bibliotecas para geração de QR Code
-Aplicação de lógica em um cenário real
-Melhorias futuras
-Interface web para geração visual
-Download automático da imagem do QR Code
-Histórico de códigos gerados
-Projeto para fins de estudo (DIO).
+## Como executar
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/Ferre1ra10/projeto-qrcode.git
+```
+
+2. Entre na pasta do projeto:
+
+```bash
+cd projeto-qrcode
+```
+
+3. Instale as dependências:
+
+```bash
+npm install
+```
+
+4. Crie o arquivo `.env` com base no exemplo:
+
+```bash
+cp .env.example .env
+```
+
+No Windows PowerShell, use:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+5. Execute o projeto:
+
+```bash
+npm run start
+```
+
+## Configuração da senha
+
+O arquivo `.env` controla como a senha será gerada:
+
+```env
+UPPERCASE_LETTERS=false
+LOWERCASE_LETTERS=false
+NUMBERS=true
+SPECIAL_CHARACTERS=true
+PASSWORD_LENGTH=12
+```
+
+Você pode alterar esses valores para permitir letras maiúsculas, letras minúsculas, números, caracteres especiais e definir o tamanho final da senha.
+
+## Aprendizados
+
+Durante o desenvolvimento, foram praticados:
+
+- criação de aplicações CLI com Node.js
+- uso de pacotes externos
+- leitura de variáveis de ambiente
+- organização de código em serviços
+- separação entre entrada, processamento e saída
+- aplicação de lógica em um cenário real
+
+## Melhorias futuras
+
+- salvar QR Codes gerados em imagem
+- adicionar histórico de senhas criadas
+- permitir mais opções de personalização
+- criar uma interface web para facilitar o uso
+
+---
+
+Projeto desenvolvido para fins de estudo no bootcamp da DIO.
